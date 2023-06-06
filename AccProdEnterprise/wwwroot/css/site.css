@@ -1,0 +1,27 @@
+* {
+    font-size: 16px;
+    font-family: 'Rubik', sans-serif;
+}
+
+html {
+   
+}
+
+@media (min-width: 768px) {
+  html {
+    font-size: 16px;
+  }
+}
+
+html {
+  position: relative;
+  min-height: 100%;
+}
+
+body {
+  margin-bottom: 60px;
+}
+
+.c-gr {
+    background-color: #727272
+}

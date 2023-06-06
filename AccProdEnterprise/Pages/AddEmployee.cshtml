@@ -1,0 +1,60 @@
+﻿@page
+@model AccProdEnterprise.Pages.AddEmployeeModel
+@{
+}
+
+
+<form method="post">
+
+    <div class="d-flex">
+        <div class="form-group">
+            <label asp-for="InputEmployee.Lastname"></label>
+            <input asp-for="InputEmployee.Lastname" class="form-control" id="AddLastName">
+            <span asp-validation-for="InputEmployee.Lastname" style="color:darkred"></span>
+        </div>
+
+        <div class="form-group px-5">
+            <label asp-for="InputEmployee.Firstname"></label>
+            <input asp-for="InputEmployee.Firstname" class="form-control" id="AddFirstName">
+            <span asp-validation-for="InputEmployee.Firstname" style="color:darkred"></span>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="InputEmployee.Middlename"></label>
+            <input asp-for="InputEmployee.Middlename" class="form-control" id="AddMiddleName">
+            <span asp-validation-for="InputEmployee.Middlename" style="color:darkred"> </span>
+        </div>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="InputEmployee.Address"></label>
+        <input asp-for="InputEmployee.Address" class="form-control" id="AddAdress">
+        <span asp-validation-for="InputEmployee.Address" style="color:darkred"> </span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="InputEmployee.NumberPhone"></label>
+        <input asp-for="InputEmployee.NumberPhone" class="form-control" id="AddNumberPhone">
+        <span asp-validation-for="InputEmployee.NumberPhone" style="color:darkred"> </span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="InputEmployee.DateOfBirth">DateOfBirth</label>
+        <input asp-for="InputEmployee.DateOfBirth" class="form-control" id="AddDateOfBirth">
+        <span asp-validation-for="InputEmployee.DateOfBirth" style="color:darkred"> </span>
+    </div>
+
+    <div class="form-group">
+        <label asp-for="InputEmployee.Email"></label>
+        <input asp-for="InputEmployee.Email" class="form-control" id="AddEmail">
+        <span asp-validation-for="InputEmployee.Email" style="color:darkred"></span>
+    </div>
+
+
+    <div class="form-group col-2 mb-3 me-5">
+        <label asp-for="InputEmployee.SelectedValuePositions"></label>
+        <select class="mt-2" asp-for="InputEmployee.SelectedValuePositions" asp-items="Model.PositionItems" name="InputEmployee.SelectedValuePositions"></select>
+    </div>
+
+    <button type="submit" class="btn btn-primary">Submit</button>
+</form>
