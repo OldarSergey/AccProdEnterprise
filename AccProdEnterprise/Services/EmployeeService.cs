@@ -52,5 +52,28 @@ namespace AccProdEnterprise.Services
             updateEmployee = newEmployee;
             _context.SaveChanges();
         }
+
+        public List<Employee> SortEmployeeLastName()
+        {
+            return _context.Employees
+                .Include(e => e.Position)
+                .OrderBy(e => e.Lastname)
+                .ToList();
+        }
+
+        public List<Employee> SortEmployeeFirstName()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Employee> SortEmployeePosition()
+        {
+            throw new NotImplementedException();
+        }
+
+        public List<Employee> SearchEmployeeLastName(string lastName)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -2,43 +2,62 @@
 @model AccProdEnterprise.Pages.Employees
 @{
 }
-<div class="d-flex">
-    
-    <a class="btn mb-2 " style="background-color:cadetblue; color:white" asp-page="AddEmployee">Add employee</a>
-</div>
-
-<div class="card shadow mb-2 ">
-    @foreach(var item in Model.EmployeesList)
-    {
+<div class="d-flex row  ">
+    <div class="col">
+        <a class="btn mb-2 " style="background-color:cadetblue; color:white" asp-page="AddEmployee">Add employee</a>
+    </div>
     
     <div class="col">
-        <div class="card shadow text-dark bg-light m-3" style="">
-               
-            <div class="card-body border">
-                <div class="col-9">
-                    <div style="display:flex; font-size:2em">
-                            <p> @item.Lastname
-                                @item.Firstname
-                                @item.Middlename 
-                            </p>
-                    </div>
-                    <div class="d-flex">
-                        <p>@item.Email @item.NumberPhone</p>
-                    </div>
-
-                   
-                    <p>@item.Position.NamePost</p>
-                </div>
-
-                <div class="top">
-                    <form method="post">
-                        <button type="submit" asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger">Delete</button>
-                    </form>
-                </div>
-                      
+        <div class="input-group mb-3">
+            <input type="text" class="form-control " placeholder="Search" aria-label="Search">
+            <div class ="input-group-append">
+                <button class="btn btn-outline-secondary w-100 ms-2" type="button">Button</button>
             </div>
         </div>
     </div>
+   
+   <div class="col ">
+        <select class="form-select form-select-lg w-50 h-75  fs-6" style="margin-left:50%">
+            <option selected value="1">Сортировка</option>
+            <option value="2">По фамилии</option>
+            <option value="3">По должности</option>
+        </select>
+    </div>
+    
+</div>
 
+<div class="card shadow mb-2 " style=" background-color:#D7D6D6;">
+    @foreach(var item in Model.EmployeesList)
+    {
+    <div class="card shadow text-dark bg-light m-3 " style="">
+        
+        <div class="card-body border rounded-3" style="background-color:#ACACAC;  position-relative;">
+            <div>
+
+                <div style="display:flex; font-size: 26px; border-bottom: 0.1px solid gray">
+                    <p class="ms-1">@item.Lastname</p>   
+                    <p class="ms-2">@item.Firstname</p>   
+                    <p class="ms-2">@item.Middlename</p>
+                </div>
+
+                <div class="d-flex" style="">
+                    <p><span class="fs-5"> E-mail:</span> @item.Email </p>
+                    <p style="position:relative; left:20%"><span class="fs-5 " style=""> Телефон:</span> @item.NumberPhone</p>
+                </div>
+
+                    <p> <span class="fs-5">Дата рождения:</span><span style="font-weight:500" > @item.DateOfBirth</span></p>
+                    <p> <span class="fs-5">Адрес проживания:</span>  <span>@item.Address</span> </p>
+                    <p>@item.Position.NamePost</p>
+                  
+                        <div class="d-flex flex-row-reverse bd-highlight" style=" position:absolute; right:2%; bottom:5%">
+                            <form method="post" style="align-items:end">
+                                <button type="submit" asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="height:50px; width:100px; border-radius:10px">Delete</button>
+                            </form>
+                        </div>
+
+                    
+            </div>        
+        </div>
+    </div>
     }
 </div>

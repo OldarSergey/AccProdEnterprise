@@ -32,7 +32,7 @@ namespace AccProdEnterprise.Pages
 
         public void OnGet()
         {
-            EmployeesList = _employeeSercice.GetEmployeesAll();
+            EmployeesList = _employeeSercice.SortEmployeeLastName();
 
         }
 

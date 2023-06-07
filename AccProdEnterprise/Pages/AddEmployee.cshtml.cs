@@ -44,7 +44,8 @@ namespace AccProdEnterprise.Pages
         [HttpPost]
         public IActionResult OnPost()
         {
-
+            if(InputEmployee.SelectedValuePositions == 0)
+                return Page();
 
             if (!ModelState.IsValid)
             {

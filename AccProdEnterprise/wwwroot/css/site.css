@@ -1,5 +1,5 @@
 * {
-    font-size: 16px;
+   
     font-family: 'Rubik', sans-serif;
 }
 
@@ -24,4 +24,13 @@ body {
 
 .c-gr {
     background-color: #727272
+}
+
+.form-group input {
+    background-color: #e3e3e3;
+}
+.border-start{
+
+    color:#e3e3e3
+                  
 }
