@@ -1,5 +1,4 @@
 using AccProdEnterprise.Entities;
-using AccProdEnterprise.Entities.DTO;
 using AccProdEnterprise.Services;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
@@ -27,20 +26,48 @@ namespace AccProdEnterprise.Pages
         [BindProperty(SupportsGet = true)]
         public string FileName { get; set; }
 
+        [BindProperty]
+        public string SortEmployee { get; set; }
 
-      
+        [BindProperty]
+        public string SerchEmployeeLastName { get; set; }
 
         public void OnGet()
         {
-            EmployeesList = _employeeSercice.SortEmployeeLastName();
-
+            EmployeesList = _employeeSercice.GetEmployeesAll();   
         }
 
-      
+
         public IActionResult OnPostDelete(int id)
         {
             _employeeSercice.DeleteEmployee(id);
             return RedirectToPage("Employees");
+        }
+
+        public IActionResult OnPostSortEmplyee()
+        {
+            switch (SortEmployee)
+            {
+                case "1":
+
+                    EmployeesList = _employeeSercice.GetEmployeesAll();
+                    return Page();
+                case "2":
+
+                    EmployeesList = _employeeSercice.SortEmployeeLastName();
+                    return Page();
+                case "3":
+
+                    EmployeesList = _employeeSercice.SortEmployeePosition();
+                    return Page();
+
+                default: return Page();
+            }
+        }
+        public IActionResult OnPostSerchEmployee()
+        {
+            EmployeesList = _employeeSercice.SearchEmployeeLastName(SerchEmployeeLastName);
+            return Page();
         }
     }
 }

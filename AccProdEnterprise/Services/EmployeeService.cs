@@ -57,6 +57,7 @@ namespace AccProdEnterprise.Services
         {
             return _context.Employees
                 .Include(e => e.Position)
+                .Where(e => e.IsDeleted == false)
                 .OrderBy(e => e.Lastname)
                 .ToList();
         }
@@ -68,12 +69,19 @@ namespace AccProdEnterprise.Services
 
         public List<Employee> SortEmployeePosition()
         {
-            throw new NotImplementedException();
+            return _context.Employees
+                .Include(e => e.Position)
+                .Where(e => e.IsDeleted ==false)
+                .OrderBy(e => e.Position.NamePost)
+                .ToList();
         }
 
         public List<Employee> SearchEmployeeLastName(string lastName)
         {
-            throw new NotImplementedException();
+            return _context.Employees
+                .Where(e => e.IsDeleted == false && e.Lastname == lastName)
+                .Include(e => e.Position)
+                .ToList();
         }
     }
 }

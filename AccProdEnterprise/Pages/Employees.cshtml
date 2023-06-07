@@ -8,23 +8,29 @@
     </div>
     
     <div class="col">
-        <div class="input-group mb-3">
-            <input type="text" class="form-control " placeholder="Search" aria-label="Search">
-            <div class ="input-group-append">
-                <button class="btn btn-outline-secondary w-100 ms-2" type="button">Button</button>
+        <form asp-page-handler="SerchEmployee">
+            <div class="input-group mb-3">
+                <input type="text" class="form-control" asp-for="@Model.SerchEmployeeLastName" placeholder="Input lastname employees" aria-label="Search">
+                <div class="input-group-append">
+                    <button type="submit" class="btn btn-outline-secondary w-100 ms-2" type="button">Найти</button>
+                </div>
             </div>
-        </div>
+        </form>
+
     </div>
    
    <div class="col ">
-        <select class="form-select form-select-lg w-50 h-75  fs-6" style="margin-left:50%">
-            <option selected value="1">Сортировка</option>
-            <option value="2">По фамилии</option>
-            <option value="3">По должности</option>
-        </select>
-    </div>
-    
+        <form asp-page-handler="SortEmplyee">
+            <select class="form-select form-select-lg w-50 h-75  fs-6" asp-for="@Model.SortEmployee" style="margin-left:50%">
+                <option selected value="1">Отменить сортировку</option>
+                <option value="2">По фамилии</option>
+                <option value="3"><button type="submit">По должности</button></option>
+            </select>
+            <button type="submit" class="btn btn-secondary">Отсортировать</button>
+       </form>
+    </div>  
 </div>
+
 
 <div class="card shadow mb-2 " style=" background-color:#D7D6D6;">
     @foreach(var item in Model.EmployeesList)
