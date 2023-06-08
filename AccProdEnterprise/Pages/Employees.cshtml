@@ -7,24 +7,23 @@
         <a class="btn mb-2 " style="background-color:cadetblue; color:white" asp-page="AddEmployee">Add employee</a>
     </div>
     
-    <div class="col">
+    <div class="col " >
         <form asp-page-handler="SerchEmployee">
-            <div class="input-group mb-3">
-                <input type="text" class="form-control" asp-for="@Model.SerchEmployeeLastName" placeholder="Input lastname employees" aria-label="Search">
+            <div class="input-group mb-3 m">
+                <input type="text" class="form-control" asp-for="@Model.SearchEmployeeLastName" placeholder="Input lastname employees" aria-label="Search">
                 <div class="input-group-append">
                     <button type="submit" class="btn btn-outline-secondary w-100 ms-2" type="button">Найти</button>
                 </div>
             </div>
         </form>
-
     </div>
    
-   <div class="col ">
-        <form asp-page-handler="SortEmplyee">
+   <div class="col">
+        <form asp-page-handler="SortEmployee ">
             <select class="form-select form-select-lg w-50 h-75  fs-6" asp-for="@Model.SortEmployee" style="margin-left:50%">
                 <option selected value="1">Отменить сортировку</option>
-                <option value="2">По фамилии</option>
-                <option value="3"><button type="submit">По должности</button></option>
+                <option value="2">by last name</option>
+                <option value="3"><button type="submit">by position</button></option>
             </select>
             <button type="submit" class="btn btn-secondary">Отсортировать</button>
        </form>
@@ -47,16 +46,17 @@
                 </div>
 
                 <div class="d-flex" style="">
-                    <p><span class="fs-5"> E-mail:</span> @item.Email </p>
-                    <p style="position:relative; left:20%"><span class="fs-5 " style=""> Телефон:</span> @item.NumberPhone</p>
+                    <p><span class="fs-5"> E-mail:</span> <span style="font-weight:500"> @item.Email</span> </p>
+                        <p style="position:relative; left:20%"><span class="fs-5 " style=""> Телефон:</span> <span style="font-weight:500" >@item.NumberPhone</span> </p>
                 </div>
 
                     <p> <span class="fs-5">Дата рождения:</span><span style="font-weight:500" > @item.DateOfBirth</span></p>
-                    <p> <span class="fs-5">Адрес проживания:</span>  <span>@item.Address</span> </p>
-                    <p>@item.Position.NamePost</p>
+                    <p> <span class="fs-5">Адрес проживания:</span> <span style="font-weight:500">@item.Address</span> </p>
+                    <p> <span class="fs-5">Должность:</span> <span style="font-weight:500">@item.Position.NamePost </span></p>
                   
                         <div class="d-flex flex-row-reverse bd-highlight" style=" position:absolute; right:2%; bottom:5%">
-                            <form method="post" style="align-items:end">
+                            <form method="post">
+                                <button  class="btn btn-success me-5" style="height:50px; width:100px; border-radius:10px;">Edit</button>
                                 <button type="submit" asp-page-handler="Delete" asp-route-id="@item.Id" class="btn btn-danger" style="height:50px; width:100px; border-radius:10px">Delete</button>
                             </form>
                         </div>

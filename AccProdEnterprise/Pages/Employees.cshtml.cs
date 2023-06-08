@@ -30,7 +30,7 @@ namespace AccProdEnterprise.Pages
         public string SortEmployee { get; set; }
 
         [BindProperty]
-        public string SerchEmployeeLastName { get; set; }
+        public string SearchEmployeeLastName { get; set; }
 
         public void OnGet()
         {
@@ -66,7 +66,7 @@ namespace AccProdEnterprise.Pages
         }
         public IActionResult OnPostSerchEmployee()
         {
-            EmployeesList = _employeeSercice.SearchEmployeeLastName(SerchEmployeeLastName);
+            EmployeesList = _employeeSercice.SearchEmployeeLastName(SearchEmployeeLastName);
             return Page();
         }
     }
