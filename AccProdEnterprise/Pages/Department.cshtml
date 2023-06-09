@@ -1,0 +1,32 @@
+﻿@page
+@model AccProdEnterprise.Pages.DepartmentModel
+@{
+}
+<form method="post" >
+    <div class="form-group mb-3">
+        <label asp-for="InputModel.NameDepartment"></label>
+        <input asp-for="InputModel.NameDepartment" class="form-control" id="AddLastName">
+        <span asp-validation-for="InputModel.NameDepartment" style="color:darkred"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="InputModel.Description"></label>
+        <input asp-for="InputModel.Description" class="form-control" id="AddFirstName">
+        <span asp-validation-for="InputModel.Description" style="color:darkred"></span>
+    </div>
+
+    <div class="form-group mb-3">
+        <label asp-for="InputModel.FullNameOfTheHead"></label>
+        <input asp-for="InputModel.FullNameOfTheHead" class="form-control" id="AddMiddleName">
+        <span asp-validation-for="InputModel.FullNameOfTheHead" style="color:darkred"> </span>
+    </div>
+    <button type="submit" class="btn btn-primary mt-2" style="background-color:cadetblue; width:130px;  ">Submit</button>
+</form>
+
+
+<div class="mt-2">
+    @if (ViewBag.Message != null)
+    {
+        <p class="text-success">@ViewBag.Message</p>
+    }
+</div>

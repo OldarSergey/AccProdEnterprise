@@ -7,15 +7,21 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 
 namespace AccProdEnterprise.Pages
 {
-    public class AddEmployeeModel : PageModel
+    public class UpdateEmployeeModel : PageModel
     {
+
+        public IEnumerable<Employee> EmployeeId { get; set; }
+
+        [BindProperty]
+        public InputEmployee InputEmployee { get; set; }
 
         private readonly IEmployeeSercice _employeeSercice;
         private readonly IPositionService _positionService;
         private readonly IDepartmentService _departmentService;
+        public List<SelectListItem> PositionItems { get; set; }
+        public List<SelectListItem> DepartmentsItems { get; set; }
 
-        public AddEmployeeModel(IEmployeeSercice employeeSercice, 
-            IPositionService positionService, 
+        public UpdateEmployeeModel(IEmployeeSercice employeeSercice, IPositionService positionService,
             IDepartmentService departmentService)
         {
             _employeeSercice = employeeSercice;
@@ -24,12 +30,6 @@ namespace AccProdEnterprise.Pages
             LoadPositions();
             LoadDepartments();
         }
-
-
-        [BindProperty]
-        public InputEmployee InputEmployee { get; set; }
-        public List<SelectListItem> PositionItems { get; set; }
-        public List<SelectListItem> DepartmentsItems { get; set; }
 
         private void LoadPositions()
         {
@@ -56,20 +56,18 @@ namespace AccProdEnterprise.Pages
             DepartmentsItems.Insert(0, new SelectListItem { Value = "0", Text = "Отсутствует", Selected = true });
         }
 
+
         public void OnGet()
-        {}
-
-        [HttpPost]
-        public IActionResult OnPost()
         {
-            if(InputEmployee.SelectedValuePositions == 0)
-                return Page();
+        }
+        public void OnPost()
+        {
 
+        }
+        public IActionResult OnPostUpdateEmployee(int id)
+        {
             if (!ModelState.IsValid)
-            {
                 return Page();
-            }
-
             var employee = new Employee()
             {
                 Firstname = InputEmployee.Firstname,
@@ -81,15 +79,23 @@ namespace AccProdEnterprise.Pages
                 DateOfBirth = InputEmployee.DateOfBirth,
                 PositionId = InputEmployee.SelectedValuePositions,
                 DepartmentId = InputEmployee.SelectedValueDepartments
+
             };
 
-            _employeeSercice.AddEmoloyee(employee);
+            _employeeSercice.UpdateEmployee(id,employee);
 
 
             return RedirectToPage("Employees");
 
+        }
+        public IActionResult OnPostSearchById(int id)
+        {
+        
+
+            EmployeeId = _employeeSercice.GetProductsById(id);
+
+            return Page();
 
         }
-
     }
 }

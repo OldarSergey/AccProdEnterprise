@@ -33,6 +33,13 @@ namespace AccProdEnterprise.Services
                 .FirstOrDefault();
         }
 
+        public List<Department> GetDepartmentAll()
+        {
+           return _context.Departments
+                .Where(d => d.IsDeleted == false)
+                .ToList();
+        }
+
         public void UpdateDepartment(string newDepartmentName, Department newDepartment)
         {
             var updateDepartment = _context.Departments
@@ -41,5 +48,6 @@ namespace AccProdEnterprise.Services
             updateDepartment = newDepartment;
             _context.SaveChanges();
         }
+        
     }
 }

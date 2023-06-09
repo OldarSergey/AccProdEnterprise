@@ -10,8 +10,6 @@ namespace AccProdEnterprise.Configurations
         {
             builder.HasKey(staff => staff.Id)
                 .HasName("PK_StaffDepartments_Id");
-
-
         }
     }
 }

@@ -8,30 +8,30 @@ namespace AccProdEnterprise.Entities.DTO
     public class InputEmployee
     {
         [Required]
-        [StringLength(100, ErrorMessage = "Not a valid phone number.")]
+        [StringLength(100, ErrorMessage = "Max limit {1}")]
         [Display(Name = "LastName" ) ]
         public string Lastname { get; set; }
         [Required]
-        [StringLength(100, ErrorMessage = "Not a valid phone number.")]
+        [StringLength(100, ErrorMessage = "Max limit {1}")]
         [Display(Name = "FirstName")]
         public string Firstname { get; set; }
 
-        [StringLength(100, ErrorMessage = "Not a valid phone number.")]
+        [StringLength(100, ErrorMessage = "Max limit {1}")]
         [Display(Name = "MiddleName")]
         public string? Middlename { get; set; }
 
         [Required]
-        [DataType(DataType.Date, ErrorMessage = "Not a valid phone number.")]
+        [DataType(DataType.Date, ErrorMessage = "Not valid date")]
         public DateTime DateOfBirth { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "Not a valid phone number.")]
+        [StringLength(100, ErrorMessage = "Max limit {1}")]
         [Display(Name = "Address")]
         public string Address { get; set; }
 
         [Required]
         [Phone]
-        [StringLength(12, ErrorMessage = "Not a valid phone number.")]
+        [StringLength(12, ErrorMessage = "Max limit {1}")]
         [Display (Name ="PhoneNumber")]
         public string NumberPhone { get; set; }
 
@@ -40,9 +40,13 @@ namespace AccProdEnterprise.Entities.DTO
         public string Email { get; set; }
 
 
-        [Required(ErrorMessage = "Not a valid phone number.")]
+        [Required(ErrorMessage = "Required field")]
         [Display(Name = "Positions")]
         public int SelectedValuePositions { get; set; }
+
+        [Required(ErrorMessage = "Required field")]
+        [Display(Name = "Departments ")]
+        public int SelectedValueDepartments { get; set; }
 
     }
 }

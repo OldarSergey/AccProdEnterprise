@@ -10,12 +10,12 @@ namespace AccProdEnterprise.Entities.DTO
         public string NameDepartment { get; set; }
 
         [Required]
-        [StringLength(500, ErrorMessage = "pampampum")]
+        [StringLength(500, ErrorMessage = "Max length is {1}")]
         [Display(Name = "Description")]
         public string Description { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage ="Papapum")]
+        [StringLength(100, ErrorMessage = "Max length is {1}")]
         [Display(Name = "NameOfTheHead")]
         public string FullNameOfTheHead { get; set; }
     }

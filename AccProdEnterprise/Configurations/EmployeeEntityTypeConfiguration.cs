@@ -51,10 +51,10 @@ namespace AccProdEnterprise.Configurations
                 .HasConstraintName("FK_Employees_PositionId_Positions_Id");
 
 
-               
-
-
-
+            builder.HasOne(emp => emp.Department)
+                .WithMany(dep => dep.Employees)
+                .HasForeignKey(emp => emp.DepartmentId)
+                .HasConstraintName("FK_Employees_DepartmentId_Department_Id");
 
 
         }

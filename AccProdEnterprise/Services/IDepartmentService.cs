@@ -8,5 +8,8 @@ namespace AccProdEnterprise.Services
         public void DeleteDepartment(string newDepartmentName);
         public void UpdateDepartment(string newDepartmentName, Department newDepartment);
         public Department GetDepartment(string newDepartmentName);
+
+        public List<Department> GetDepartmentAll();
+
     }
 }

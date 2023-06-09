@@ -1,5 +1,6 @@
 ﻿using AccProdEnterprise.Data;
 using AccProdEnterprise.Entities;
+using AccProdEnterprise.Pages;
 using Microsoft.EntityFrameworkCore;
 
 namespace AccProdEnterprise.Services
@@ -87,5 +88,23 @@ namespace AccProdEnterprise.Services
                 .Include(e => e.Position)
                 .ToList();
         }
+
+        public void UpdateEmployee(int idEmployee, Employee newProduct)
+        {
+            var employees = _context.Employees
+                .Where(product => product.Id == idEmployee)
+                .FirstOrDefault();
+            employees.IsDeleted = true;
+
+            _context.Employees.Add(newProduct);
+            _context.SaveChanges();
+        }
+        public IEnumerable<Employee> GetProductsById(int employeeId)
+        {
+            return _context.Employees
+                .Where(pr => pr.IsDeleted == false && pr.Id == employeeId)
+                .ToList();
+        }
+
     }
 }

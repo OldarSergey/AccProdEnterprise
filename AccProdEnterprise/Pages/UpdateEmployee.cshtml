@@ -1,0 +1,74 @@
+﻿@page
+@model AccProdEnterprise.Pages.UpdateEmployeeModel
+@{
+}
+@foreach(var item in @Model.EmployeeId)
+{
+    <form method="post" asp-page-handler="UpdateEmployee" asp-route-id="@item.Id">
+
+        <div class="d-flex">
+            <div class="form-group">
+                <label asp-for="InputEmployee.Lastname"></label>
+                <input asp-for="InputEmployee.Lastname" class="form-control" value="@item.Lastname" id="AddLastName">
+                <span asp-validation-for="InputEmployee.Lastname" style="color:darkred"></span>
+            </div>
+
+            <div class="form-group px-5">
+                <label asp-for="InputEmployee.Firstname"></label>
+                <input asp-for="InputEmployee.Firstname" class="form-control" value="@item.Firstname" id="AddFirstName">
+                <span asp-validation-for="InputEmployee.Firstname" style="color:darkred"></span>
+            </div>
+
+            <div class="form-group">
+                <label asp-for="InputEmployee.Middlename"></label>
+                <input asp-for="InputEmployee.Middlename" class="form-control" value="@item.Middlename" id="AddMiddleName">
+                <span asp-validation-for="InputEmployee.Middlename" style="color:darkred"> </span>
+            </div>
+        </div>
+
+        <div class="d-flex">
+            <div class="form-group ">
+                <label asp-for="InputEmployee.NumberPhone"></label>
+                <input asp-for="InputEmployee.NumberPhone" class="form-control" value="@item.NumberPhone" style="width:300px" id="AddNumberPhone">
+                <span asp-validation-for="InputEmployee.NumberPhone" style="color:darkred"> </span>
+            </div>
+
+            <div class="form-group px-5">
+                <label asp-for="InputEmployee.Email"></label>
+                <input asp-for="InputEmployee.Email" class="form-control" value="@item.Email" style="width:300px" id="AddEmail">
+                <span asp-validation-for="InputEmployee.Email" style="color:darkred"></span>
+            </div>
+        </div>
+
+
+        <div class="form-group w-50">
+            <label asp-for="InputEmployee.Address"></label>
+            <input asp-for="InputEmployee.Address" class="form-control" value="@item.Address" id="AddAdress">
+            <span asp-validation-for="InputEmployee.Address" style="color:darkred"> </span>
+        </div>
+
+
+
+        <div class="form-group w-50">
+            <label asp-for="InputEmployee.DateOfBirth">DateOfBirth</label>
+            <input asp-for="InputEmployee.DateOfBirth" class="form-control" value="@item.DateOfBirth" id="AddDateOfBirth">
+            <span asp-validation-for="InputEmployee.DateOfBirth" style="color:darkred"> </span>
+        </div>
+
+
+
+
+        <div class="form-group col-2 mb-3 me-5 w-50">
+            <label asp-for="InputEmployee.SelectedValuePositions"></label>
+            <select class="mt-2 form-select" style="background-color:#e3e3e3" asp-for="InputEmployee.SelectedValuePositions" asp-items="Model.PositionItems"></select>
+        </div>
+        <div class="form-group col-2 mb-3 me-5 w-50">
+            <label asp-for="InputEmployee.SelectedValueDepartments"></label>
+        <select class="mt-2 form-select" style="background-color:#e3e3e3" asp-for="InputEmployee.SelectedValueDepartments" asp-items="Model.DepartmentsItems" ></select>
+    </div>
+        <button type="submit" class=" btn btn-success">Save</button>
+        <a class="btn btn-danger ms-4" asp-page="Employees">Back</a>
+    </form>
+
+}
+
