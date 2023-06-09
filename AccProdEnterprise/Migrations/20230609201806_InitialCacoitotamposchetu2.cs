@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace AccProdEnterprise.Migrations
 {
-    public partial class InitSeedData : Migration
+    public partial class InitialCacoitotamposchetu2 : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -75,34 +75,6 @@ namespace AccProdEnterprise.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_Tablesheets_Id", x => x.Id);
-                });
-
-            migrationBuilder.CreateTable(
-                name: "Employees",
-                columns: table => new
-                {
-                    Id = table.Column<int>(type: "int", nullable: false)
-                        .Annotation("SqlServer:Identity", "1, 1"),
-                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
-                    Lastname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Firstname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    Middlename = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
-                    DateOfBirth = table.Column<DateTime>(type: "datetime", nullable: false),
-                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
-                    NumberPhone = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
-                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
-                    PositionName = table.Column<int>(type: "int", nullable: false),
-                    PositionId = table.Column<int>(type: "int", nullable: false)
-                },
-                constraints: table =>
-                {
-                    table.PrimaryKey("PK_Employees_Id", x => x.Id);
-                    table.ForeignKey(
-                        name: "FK_Employees_PositionId_Positions_Id",
-                        column: x => x.PositionId,
-                        principalTable: "Positions",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Cascade);
                 });
 
             migrationBuilder.CreateTable(
@@ -176,6 +148,55 @@ namespace AccProdEnterprise.Migrations
                         onDelete: ReferentialAction.Cascade);
                 });
 
+            migrationBuilder.CreateTable(
+                name: "Employees",
+                columns: table => new
+                {
+                    Id = table.Column<int>(type: "int", nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1"),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
+                    Lastname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Firstname = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Middlename = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: true),
+                    DateOfBirth = table.Column<DateTime>(type: "datetime", nullable: false),
+                    Address = table.Column<string>(type: "nvarchar(100)", maxLength: 100, nullable: false),
+                    NumberPhone = table.Column<string>(type: "nvarchar(12)", maxLength: 12, nullable: false),
+                    Email = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    PositionName = table.Column<int>(type: "int", nullable: false),
+                    PositionId = table.Column<int>(type: "int", nullable: false),
+                    TablesheetsId = table.Column<int>(type: "int", nullable: false),
+                    AdvancedTrainingCourseId = table.Column<int>(type: "int", nullable: false),
+                    DepartmentId = table.Column<int>(type: "int", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Employees_Id", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Employees_AdvancedTrainingCourseId_AdvancedTrainingCourse_Id",
+                        column: x => x.AdvancedTrainingCourseId,
+                        principalTable: "AdvancedTrainingCourses",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Employees_DepartmentId_Department_Id",
+                        column: x => x.DepartmentId,
+                        principalTable: "Departments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Employees_PositionId_Positions_Id",
+                        column: x => x.PositionId,
+                        principalTable: "Positions",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Employees_TablesheetsId_Tablesheets_Id",
+                        column: x => x.TablesheetsId,
+                        principalTable: "Tablesheets",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
             migrationBuilder.CreateIndex(
                 name: "IX_AdmissionDismissalOrders_StaffDepartmentId",
                 table: "AdmissionDismissalOrders",
@@ -187,9 +208,24 @@ namespace AccProdEnterprise.Migrations
                 column: "StaffDepartmentId");
 
             migrationBuilder.CreateIndex(
+                name: "IX_Employees_AdvancedTrainingCourseId",
+                table: "Employees",
+                column: "AdvancedTrainingCourseId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Employees_DepartmentId",
+                table: "Employees",
+                column: "DepartmentId");
+
+            migrationBuilder.CreateIndex(
                 name: "IX_Employees_PositionId",
                 table: "Employees",
                 column: "PositionId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Employees_TablesheetsId",
+                table: "Employees",
+                column: "TablesheetsId");
 
             migrationBuilder.CreateIndex(
                 name: "IX_VacationApplications_StaffDepartmentId",
@@ -203,22 +239,22 @@ namespace AccProdEnterprise.Migrations
                 name: "AdmissionDismissalOrders");
 
             migrationBuilder.DropTable(
+                name: "Employees");
+
+            migrationBuilder.DropTable(
+                name: "VacationApplications");
+
+            migrationBuilder.DropTable(
                 name: "AdvancedTrainingCourses");
 
             migrationBuilder.DropTable(
                 name: "Departments");
 
             migrationBuilder.DropTable(
-                name: "Employees");
+                name: "Positions");
 
             migrationBuilder.DropTable(
                 name: "Tablesheets");
-
-            migrationBuilder.DropTable(
-                name: "VacationApplications");
-
-            migrationBuilder.DropTable(
-                name: "Positions");
 
             migrationBuilder.DropTable(
                 name: "StaffDepartments");

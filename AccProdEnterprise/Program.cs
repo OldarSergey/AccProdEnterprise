@@ -16,6 +16,7 @@ namespace AccProdEnterprise
             builder.Services.AddRazorPages().AddRazorRuntimeCompilation();
             builder.Services.AddScoped<IEmployeeSercice, EmployeeService>();
             builder.Services.AddScoped<IPositionService, PositionService>();
+            builder.Services.AddScoped<IDepartmentService, DepartmentService>();
 
             var configuration = builder.Configuration;
             builder.Services.AddDbContext<ApplicationDbContext>(options =>

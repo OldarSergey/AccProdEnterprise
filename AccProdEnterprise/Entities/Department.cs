@@ -9,7 +9,7 @@
         public string FullNameOfTheHead { get; set; }
 
 
-        //public ICollection<Employee> Employees { get; set; }
+        public ICollection<Employee> Employees { get; set; }
 
         public int StaffDepartmentId{ get; set; }
         public StaffDepartment StaffDepartment{ get; set; }

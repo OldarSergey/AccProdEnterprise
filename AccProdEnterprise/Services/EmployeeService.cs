@@ -64,7 +64,11 @@ namespace AccProdEnterprise.Services
 
         public List<Employee> SortEmployeeFirstName()
         {
-            throw new NotImplementedException();
+            return _context.Employees
+                  .Include(e => e.Position)
+                  .Where(e => e.IsDeleted == false)
+                  .OrderBy(e => e.Firstname)
+                  .ToList();
         }
 
         public List<Employee> SortEmployeePosition()

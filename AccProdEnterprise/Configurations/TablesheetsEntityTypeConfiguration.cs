@@ -30,11 +30,11 @@ namespace AccProdEnterprise.Configurations
                 .HasMaxLength(100)
                 .HasColumnType("nvarchar");
 
-            //builder.HasMany(tablesheets => tablesheets.Employees)
-            //    .WithOne(employee => employee.Tablesheet)
-            //    .HasForeignKey(employee => employee.TablesheetsId)
-            //    .HasConstraintName("FK_Employees_TablesheetsId_Tablesheets_Id");
-                
+            builder.HasMany(tablesheets => tablesheets.Employees)
+                .WithOne(employee => employee.Tablesheet)
+                .HasForeignKey(employee => employee.TablesheetsId)
+                .HasConstraintName("FK_Employees_TablesheetsId_Tablesheets_Id");
+
 
 
         }

@@ -21,14 +21,14 @@ namespace AccProdEnterprise.Entities
         public int PositionId { get; set; }
         public Position Position { get; set; }
 
-        //public int TablesheetsId { get; set; }
-        //public Tablesheet Tablesheet { get; set; }
+        public int TablesheetsId { get; set; }
+        public Tablesheet Tablesheet { get; set; }
 
-        //public int AdvancedTrainingCourseId { get; set; }
-        //public AdvancedTrainingCourse AdvancedTrainingCourse { get; set; }
+        public int AdvancedTrainingCourseId { get; set; }
+        public AdvancedTrainingCourse AdvancedTrainingCourse { get; set; }
 
 
-        //public int DepartmentId { get; set; }
-        //public Department Departments { get; set; }
+        public int DepartmentId { get; set; }
+        public Department Departments { get; set; }
     }
 }

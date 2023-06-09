@@ -34,12 +34,12 @@ namespace AccProdEnterprise.Configurations
              .HasMaxLength(50)
              .HasColumnType("nvarchar");
 
-            //builder.HasMany(advanced => advanced.Employees)
-            //    .WithOne(employee => employee.AdvancedTrainingCourse)
-            //    .HasForeignKey(advanced => advanced.AdvancedTrainingCourseId)
-            //    .HasConstraintName("FK_Employees_AdvancedTrainingCourseId_AdvancedTrainingCourse_Id");
-                
-                
+            builder.HasMany(advanced => advanced.Employees)
+                .WithOne(employee => employee.AdvancedTrainingCourse)
+                .HasForeignKey(advanced => advanced.AdvancedTrainingCourseId)
+                .HasConstraintName("FK_Employees_AdvancedTrainingCourseId_AdvancedTrainingCourse_Id");
+
+
 
 
         }

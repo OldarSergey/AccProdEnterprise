@@ -24,10 +24,10 @@ namespace AccProdEnterprise.Configurations
                 .HasMaxLength(100)
                 .HasColumnType("nvarchar");
 
-            //builder.HasMany(department => department.Employees)
-            //    .WithOne(employee => employee.Departments)
-            //    .HasForeignKey(employee => employee.DepartmentId)
-            //    .HasConstraintName("FK_Employees_DepartmentId_Department_Id");
+            builder.HasMany(department => department.Employees)
+                .WithOne(employee => employee.Departments)
+                .HasForeignKey(employee => employee.DepartmentId)
+                .HasConstraintName("FK_Employees_DepartmentId_Department_Id");
 
             builder.HasOne(department => department.StaffDepartment)
                 .WithMany(staff => staff.Departments)

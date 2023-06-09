@@ -37,6 +37,11 @@ namespace AccProdEnterprise.Pages
             EmployeesList = _employeeSercice.GetEmployeesAll();   
         }
 
+        public IActionResult OnPost()
+        {
+            return Page();
+        }
+
 
         public IActionResult OnPostDelete(int id)
         {
@@ -44,20 +49,23 @@ namespace AccProdEnterprise.Pages
             return RedirectToPage("Employees");
         }
 
-        public IActionResult OnPostSortEmplyee()
+        public IActionResult OnPostSortEmployee()
         {
             switch (SortEmployee)
             {
                 case "1":
-
                     EmployeesList = _employeeSercice.GetEmployeesAll();
                     return Page();
-                case "2":
 
+                case "2":
                     EmployeesList = _employeeSercice.SortEmployeeLastName();
                     return Page();
-                case "3":
 
+                case "3":
+                    EmployeesList = _employeeSercice.SortEmployeeFirstName();
+                    return Page();
+
+                case "4":
                     EmployeesList = _employeeSercice.SortEmployeePosition();
                     return Page();
 

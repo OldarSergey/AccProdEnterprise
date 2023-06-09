@@ -11,8 +11,8 @@
         public string Organizer { get; set; }
 
 
-      
-        //public ICollection<Employee> Employees{ get; set; }
+
+        public ICollection<Employee> Employees { get; set; }
 
 
 

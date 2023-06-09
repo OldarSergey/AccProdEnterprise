@@ -3,7 +3,7 @@ using AccProdEnterprise.Entities;
 
 namespace AccProdEnterprise.Services
 {
-    public class DepartmentService
+    public class DepartmentService : IDepartmentService
     {
         public ApplicationDbContext _context;
 

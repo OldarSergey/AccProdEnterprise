@@ -143,8 +143,14 @@ namespace AccProdEnterprise.Migrations
                         .HasMaxLength(100)
                         .HasColumnType("nvarchar(100)");
 
+                    b.Property<int>("AdvancedTrainingCourseId")
+                        .HasColumnType("int");
+
                     b.Property<DateTime>("DateOfBirth")
                         .HasColumnType("datetime");
+
+                    b.Property<int>("DepartmentId")
+                        .HasColumnType("int");
 
                     b.Property<string>("Email")
                         .IsRequired()
@@ -179,10 +185,19 @@ namespace AccProdEnterprise.Migrations
                     b.Property<int>("PositionName")
                         .HasColumnType("int");
 
+                    b.Property<int>("TablesheetsId")
+                        .HasColumnType("int");
+
                     b.HasKey("Id")
                         .HasName("PK_Employees_Id");
 
+                    b.HasIndex("AdvancedTrainingCourseId");
+
+                    b.HasIndex("DepartmentId");
+
                     b.HasIndex("PositionId");
+
+                    b.HasIndex("TablesheetsId");
 
                     b.ToTable("Employees");
                 });
@@ -350,6 +365,20 @@ namespace AccProdEnterprise.Migrations
 
             modelBuilder.Entity("AccProdEnterprise.Entities.Employee", b =>
                 {
+                    b.HasOne("AccProdEnterprise.Entities.AdvancedTrainingCourse", "AdvancedTrainingCourse")
+                        .WithMany("Employees")
+                        .HasForeignKey("AdvancedTrainingCourseId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_Employees_AdvancedTrainingCourseId_AdvancedTrainingCourse_Id");
+
+                    b.HasOne("AccProdEnterprise.Entities.Department", "Departments")
+                        .WithMany("Employees")
+                        .HasForeignKey("DepartmentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_Employees_DepartmentId_Department_Id");
+
                     b.HasOne("AccProdEnterprise.Entities.Position", "Position")
                         .WithMany("Employees")
                         .HasForeignKey("PositionId")
@@ -357,7 +386,20 @@ namespace AccProdEnterprise.Migrations
                         .IsRequired()
                         .HasConstraintName("FK_Employees_PositionId_Positions_Id");
 
+                    b.HasOne("AccProdEnterprise.Entities.Tablesheet", "Tablesheet")
+                        .WithMany("Employees")
+                        .HasForeignKey("TablesheetsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired()
+                        .HasConstraintName("FK_Employees_TablesheetsId_Tablesheets_Id");
+
+                    b.Navigation("AdvancedTrainingCourse");
+
+                    b.Navigation("Departments");
+
                     b.Navigation("Position");
+
+                    b.Navigation("Tablesheet");
                 });
 
             modelBuilder.Entity("AccProdEnterprise.Entities.VacationApplication", b =>
@@ -372,6 +414,16 @@ namespace AccProdEnterprise.Migrations
                     b.Navigation("StaffDepartment");
                 });
 
+            modelBuilder.Entity("AccProdEnterprise.Entities.AdvancedTrainingCourse", b =>
+                {
+                    b.Navigation("Employees");
+                });
+
+            modelBuilder.Entity("AccProdEnterprise.Entities.Department", b =>
+                {
+                    b.Navigation("Employees");
+                });
+
             modelBuilder.Entity("AccProdEnterprise.Entities.Position", b =>
                 {
                     b.Navigation("Employees");
@@ -384,6 +436,11 @@ namespace AccProdEnterprise.Migrations
                     b.Navigation("Departments");
 
                     b.Navigation("VacationApplications");
+                });
+
+            modelBuilder.Entity("AccProdEnterprise.Entities.Tablesheet", b =>
+                {
+                    b.Navigation("Employees");
                 });
 #pragma warning restore 612, 618
         }

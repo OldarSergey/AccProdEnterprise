@@ -18,14 +18,15 @@
         </form>
     </div>
    
-   <div class="col">
-        <form asp-page-handler="SortEmployee ">
+   <div class="col position-relative">
+        <form asp-page-handler="SortEmployee">
             <select class="form-select form-select-lg w-50 h-75  fs-6" asp-for="@Model.SortEmployee" style="margin-left:50%">
                 <option selected value="1">Отменить сортировку</option>
                 <option value="2">by last name</option>
-                <option value="3"><button type="submit">by position</button></option>
+                <option value="3">by first name</option>
+                <option value="4"><button type="submit">by position</button></option>
             </select>
-            <button type="submit" class="btn btn-secondary">Отсортировать</button>
+            <button type="submit" class="btn btn-secondary" style="position:absolute; top:0">Отсортировать</button>
        </form>
     </div>  
 </div>
